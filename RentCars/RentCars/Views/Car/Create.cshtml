@@ -1,0 +1,62 @@
+﻿@model Car
+@{
+    if (Model is null)
+        ViewBag.title = "Create";
+    else
+        ViewBag.title = "Edit";
+}
+
+
+<h2> @ViewBag.title Cars</h2>
+<form asp-action=@ViewBag.title>
+    <div asp-validation-summary=All></div>
+
+    <div asp-validation-summary=All></div>
+
+
+    <div class="col-lg-5">
+        <label asp-for="CarId" class="control-lable"></label>
+        <input asp-for="CarId" class="form-control" readonly />
+    </div>
+
+
+    <div class="col-lg-5">
+        <label asp-for="Type" class="control-lable"></label>
+        <input asp-for="Type" class="form-control" />
+    </div>
+
+    <div class="col-lg-5">
+        <label asp-for="EngCapacity" class="control-lable"></label>
+        <input asp-for="EngCapacity" class="form-control" />
+    </div>
+
+    <div class="col-lg-5">
+        <label asp-for="Color" class="control-lable"></label>
+        <input asp-for="Color" class="form-control" />
+    </div>
+
+    <div class="col-lg-5">
+        <label asp-for="Price" class="control-lable"></label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+
+    <div class="col-lg-5">
+        <label asp-for="DriveStatus" class="control-lable"></label>
+        <select asp-for="DriveStatus" class="form-control">
+            <option value="">select Driver</option>
+            <option value="without driver">without driver</option>
+            <option value="with a driver">with a driver</option>
+        </select>
+    </div>
+
+   
+    <br />
+    <input type="submit" value="save" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary"> cancel</a>
+
+
+
+
+</form>
+
+

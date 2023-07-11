@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Car>
+<h1>Cars page</h1>
+
+@using (Html.BeginForm())
+{
+    <br />
+    <div class="input-group">
+        <input type="submit" value="Search" class="btn btn-outline-success">
+        @Html.TextBox("searchbyname",null,new{@class="form-control",@placholder="Search Car..."})
+        
+    </div>
+    <br />
+}
+
+<a asp-action="create" class="btn btn-dark"> create new</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarId)
+            </th>
+            <th>
+                @Html.ActionLink("Type car","Index",new{sortField="Type",currentSortField=ViewBag.sortField,sortDirection=ViewBag})
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngCapacity)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.ActionLink("Daily Rent ","Index",new{sortField="Price",currentSortField=ViewBag.sortField,sortDirection=ViewBag})
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriveStatus)
+            </th>
+            <th>
+               Action
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem=>item.CarId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem=>item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem=>item.EngCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem=>item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem=>item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem=>item.DriveStatus)
+                </td>
+                <td>
+                    @Html.ActionLink("edit","edit",new {id =item.CarId})
+                    @Html.ActionLink("Delete","Delete",new {id =item.CarId},new {onclick ="return confirm('are you sure !');"})
+                </td>
+            </tr>
+        }
+    </tbody>
